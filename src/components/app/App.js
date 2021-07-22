@@ -2,6 +2,7 @@
 // import Header from '../header';
 import Task from '../task';
 import { useState } from 'react';
+import './App.css'
 
 function App() {
 
@@ -15,13 +16,11 @@ function App() {
   }
   
   return (
-    <div className="App">
+    <div className="app">
       <header>
-            <div>
-                <h1>
-                    To Do List
-                </h1>
-            </div>
+            <h1>
+                To Do List
+            </h1> 
             <div>
                 <input
                     type='text' 
@@ -29,7 +28,6 @@ function App() {
                     value={inputText}
                     onChange={handleChange}/>
                 <button onClick={() => {
-                  // console.log([...tasks, inputText]);
                   setTask([...tasks, inputText]);
                 }}>
                     Add

@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './task.css' 
 
 const Task = (props) => {
-    console.log('123');
+
+    const [state, setState] = useState('unchecked')
+
+    function toggleTask() {
+        state === 'unchecked' ? setState('checked') : setState('unchecked');
+    }
+
         return(
-        <li>
+        <li className={state} onClick={toggleTask}>
             {props.message}
+            <span className="close">x</span>
         </li>
         );
 }

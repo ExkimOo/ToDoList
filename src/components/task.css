@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+  }
+
+ul li {
+    margin: 0 0 0 0;
+    list-style-type: none;
+    height: 40px;
+    font-size: x-large;
+    text-align: left;
+    text-align: justify;
+    /* display: flex; */
+}
+
+ul li.checked {
+    background-color: rgb(165, 165, 165);
+    text-decoration: line-through;
+    color: white;
+}
+
+ul li.unchecked {
+    background-color: rgb(236, 233, 233);
+    color: black;
+}
+
+ul li:hover {
+    
+}
+
+ul li.checked::before {
+
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+}
