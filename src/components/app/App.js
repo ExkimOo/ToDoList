@@ -1,30 +1,53 @@
 // import './App.css';
-import Header from '../header';
-import List from '../list';
+// import Header from '../header';
+import Task from '../task';
+import { useState } from 'react';
 
-// const listItems = listArray.map((msg) =>
-// <li>{msg}</li>
-// );
+function App() {
 
-function App(props) {
+  const [inputText, setInputText] = useState('');
+  const [tasks, setTask] = useState([
+    'Learn React'
+  ]);
+  
+  function handleChange(event) {
+      setInputText(event.target.value);
+  }
+  
   return (
     <div className="App">
-      <Header>
-
-      </Header>
+      <header>
+            <div>
+                <h1>
+                    To Do List
+                </h1>
+            </div>
+            <div>
+                <input
+                    type='text' 
+                    placeholder='Type...'
+                    value={inputText}
+                    onChange={handleChange}/>
+                <button onClick={() => {
+                  // console.log([...tasks, inputText]);
+                  setTask([...tasks, inputText]);
+                }}>
+                    Add
+                </button>
+            </div>
+        </header>
       <ul>
-        {/* {listItems} */}
+        {tasks.map((task) => (
+          <Task 
+          message={task} 
+          id={0} 
+          checked={0} />))}
+        
       </ul>
     </div>
   );
 }
 
-// const addButton = document.querySelector("button");
-// console.log(document.querySelector("button"));
-// function addElement ()  {
 
-// }
-// const inputData = document.querySelector("input").value();
-// addButton.addEventListener("click", () => addElement.bind(document.querySelector("input").value()));
 
 export default App;

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './header.css'
 
 const Header = () => {
@@ -12,11 +12,13 @@ const Header = () => {
 
     return (
         <header>
-            <h1>
-                To Do List
-            </h1>
             <div>
-                <input 
+                <h1>
+                    To Do List
+                </h1>
+            </div>
+            <div>
+                <input
                     type='text' 
                     placeholder='Type...'
                     value={value}
