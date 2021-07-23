@@ -1,15 +1,28 @@
-// import './App.css';
-// import Header from '../header';
-import Task from '../task';
 import { useState } from 'react';
 import './App.css'
+import '../task.css'
 
 function App() {
 
   const [inputText, setInputText] = useState('');
-  const [tasks, setTask] = useState([
-    'Learn React'
+  const [tasks, setTasks] = useState([
+    'Learn React',
+    'Hello there',
+    '123'
   ]);
+  const [states, setStates] = useState(['unchecked', 'unchecked', 'unchecked']);
+
+  function toggleTask(index) {
+      console.log(states);
+      states(index) === 'unchecked' ? setStates(...states.slice(0, index), 'checked', ...states.slice(index+1)) : 
+      setStates(...states.slice(0, index), 'unchecked', ...states.slice(index+1));
+  }
+
+  function deleteTask(index) {
+    // console.log(...tasks.slice(0, index), ...tasks(index+1));
+        // setTasks(...tasks.slice(0, index), ...tasks(index+1));
+        // setStates(...states.slice(0, index), ...states(index+1));
+  }
   
   function handleChange(event) {
       setInputText(event.target.value);
@@ -28,24 +41,34 @@ function App() {
                     value={inputText}
                     onChange={handleChange}/>
                 <button onClick={() => {
-                  setTask([...tasks, inputText]);
+                  setTasks([...tasks, inputText]);
+                  setStates([...states, 'unchecked']);
                 }}>
                     Add
                 </button>
             </div>
         </header>
       <ul>
-        {tasks.map((task) => (
-          <Task 
-          message={task} 
-          id={0} 
-          checked={0} />))}
+             
+        
+        {/* {console.log(states)} */}
+        {tasks.map((task, index) => {
+          return(
+            <li className='unchecked' onClick={toggleTask.bind(index)}>
+              {task}
+              <span className="close" onClick={deleteTask.bind(index)}>×</span>
+            </li>
+          )
+        })}
+      
+
+
+        
+        
         
       </ul>
     </div>
   );
 }
-
-
 
 export default App;

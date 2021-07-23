@@ -9,10 +9,14 @@ const Task = (props) => {
         state === 'unchecked' ? setState('checked') : setState('unchecked');
     }
 
+    function deleteTask() {
+        
+    }
+
         return(
         <li className={state} onClick={toggleTask}>
             {props.message}
-            <span className="close">x</span>
+            <span className="close" onClick={deleteTask}>×</span>
         </li>
         );
 }

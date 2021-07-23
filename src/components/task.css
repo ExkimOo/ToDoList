@@ -2,14 +2,17 @@
     box-sizing: border-box;
   }
 
+ul {
+    margin: 0;
+    padding: 0;
+}
+
 ul li {
-    margin: 0 0 0 0;
-    list-style-type: none;
-    height: 40px;
-    font-size: x-large;
     text-align: left;
-    text-align: justify;
-    /* display: flex; */
+    padding: 10px 5px 10px 40px;
+    list-style-type: none;
+    font-size: 28px;
+    user-select: none;
 }
 
 ul li.checked {
@@ -23,15 +26,28 @@ ul li.unchecked {
     color: black;
 }
 
-ul li:hover {
-    
+ul li.check:hover {
+    background-color: rgb(200, 218, 218);
 }
 
 ul li.checked::before {
-
+    content: "✓";
+    background-color: rgb(165, 165, 165);
+    text-decoration: none;
+    left: 0;
+    font-size: 28px;
+    padding: 0px 5px 5px 10px;
+    position: absolute;
 }
 
 .close {
-    position: absolute;
-    right: 15px;
+    font-size: 28px;
+    padding: 10px 13px 10px 13px;
+    left: 1702px;
+    position: relative;
+    text-decoration: none;
+}
+
+.close:hover {
+    background-color: rgb(246, 87, 87);
 }
