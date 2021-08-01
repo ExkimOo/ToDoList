@@ -1,71 +1,64 @@
 import { useState } from 'react';
 import './App.css'
-import '../task.css'
 
 function App() {
 
-  const [inputText, setInputText] = useState('');
-  const [tasks, setTasks] = useState([
-    'Learn React',
-    'Hello there',
-    '123'
+  let [inputText, setInputText] = useState('');
+  let [tasks, setTasks] = useState([
+    {name: 'Learn React', state: false},
+    {name: 'With me', state: false},
+    {name: 'Properly', state: false},
   ]);
-  const [states, setStates] = useState(['unchecked', 'unchecked', 'unchecked']);
+  console.log(tasks);
 
   function toggleTask(index) {
-      console.log(states);
-      states(index) === 'unchecked' ? setStates(...states.slice(0, index), 'checked', ...states.slice(index+1)) : 
-      setStates(...states.slice(0, index), 'unchecked', ...states.slice(index+1));
+    console.log('Here');
+    setTasks((prev) => [...prev.slice(0, index), {name: prev[index].name, state: !prev[index].state}, ...prev.slice(index+1)]);
   }
 
-  function deleteTask(index) {
-    // console.log(...tasks.slice(0, index), ...tasks(index+1));
-        // setTasks(...tasks.slice(0, index), ...tasks(index+1));
-        // setStates(...states.slice(0, index), ...states(index+1));
+  function deleteTask(index, e) {
+    e.stopPropagation();
+    setTasks((prev) => [...prev.slice(0, index), ...prev.slice(index+1)]);
   }
   
-  function handleChange(event) {
-      setInputText(event.target.value);
+  function handleChange(e) {
+      setInputText(e.target.value);
   }
   
   return (
     <div className="app">
       <header>
-            <h1>
-                To Do List
-            </h1> 
-            <div>
-                <input
-                    type='text' 
-                    placeholder='Type...'
-                    value={inputText}
-                    onChange={handleChange}/>
-                <button onClick={() => {
-                  setTasks([...tasks, inputText]);
-                  setStates([...states, 'unchecked']);
-                }}>
-                    Add
-                </button>
-            </div>
-        </header>
-      <ul>
-             
-        
-        {/* {console.log(states)} */}
-        {tasks.map((task, index) => {
+        <h1>
+          To Do List
+        </h1> 
+        <div>
+          <input
+              type='text' 
+              placeholder='Type...'
+              value={inputText}
+              onChange={handleChange}/>
+          <button onClick={() => {
+            if (inputText) {
+              setTasks([...tasks, {name: inputText, state: false}]);
+              // setStates([...states, false]);
+            }
+          }}>
+              Add
+          </button>
+        </div>
+      </header>
+      <ul> 
+          {tasks.map((task, index) => {
           return(
-            <li className='unchecked' onClick={toggleTask.bind(index)}>
-              {task}
-              <span className="close" onClick={deleteTask.bind(index)}>×</span>
+            <li 
+              key={index}
+              className={tasks[index].state === true ? 'checked' : 'unchecked'} 
+              onClick={() => toggleTask(index)}>  
+                {task.name}
+                <span className="close" onClick={(e) => deleteTask(index, e)}>×</span>
             </li>
           )
         })}
-      
-
-
-        
-        
-        
       </ul>
     </div>
   );
