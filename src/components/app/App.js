@@ -9,7 +9,6 @@ function App() {
     {name: 'With me', state: false},
     {name: 'Properly', state: false},
   ]);
-  console.log(tasks);
 
   function toggleTask(index) {
     console.log('Here');
