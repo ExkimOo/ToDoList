@@ -2,7 +2,10 @@
 
 Basic implementation of ToDoList.
 
-Tech Stack and Tools used:
+## Screenshot:
+<img src="./screenshots/todopresentation.png">
+
+## Tech Stack and Tools used:
 <table>
     <tr>
         <td><img src="https://camo.githubusercontent.com/e9141be13e6bea8c50af6d48f64700246faed666040ead23e74d4fc27bf411e3/68747470733a2f2f696d672e69636f6e73382e636f6d2f666c75656e742f34382f3030303030302f76697375616c2d73747564696f2d636f64652d323031392e706e67" width="50"></td>
